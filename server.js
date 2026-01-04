@@ -9,7 +9,7 @@ const app = express()
 app.use(cors())
 app.use(express.json())
 
-const apiKey = process.env.JQUANTS_API_KEY
+const apiKey = process.env.JQUANTS_API_KEY || 'l_qtNLPNaA47s0JKnf5cA3Nqc1-FsZL3RX6_GdT00Zo'
 const headers = { 'x-api-key': apiKey }
 
 // キャッシュ
