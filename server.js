@@ -314,8 +314,13 @@ const __dirname = path.dirname(__filename)
 // Viteのビルド成果物を配信
 app.use(express.static(path.join(__dirname, 'dist')))
 
-app.get('*', (req, res) => {
-  res.sendFile(path.join(__dirname, 'dist', 'index.html'))
+// API以外のすべてのルートでindex.htmlを返す
+app.use((req, res, next) => {
+  if (!req.path.startsWith('/api')) {
+    res.sendFile(path.join(__dirname, 'dist', 'index.html'))
+  } else {
+    next()
+  }
 })
 
 const PORT = 3001
