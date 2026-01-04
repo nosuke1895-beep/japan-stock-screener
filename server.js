@@ -304,7 +304,25 @@ app.get('/api/financials/:code', async (req, res) => {
   }
 })
 
+// 静的ファイルの配信
+import path from 'path'
+import { fileURLToPath } from 'url'
+
+const __filename = fileURLToPath(import.meta.url)
+const __dirname = path.dirname(__filename)
+
+// Viteのビルド成果物を配信
+app.use(express.static(path.join(__dirname, 'dist')))
+
+
 const PORT = 3001
+
+// すべてのルートでindex.htmlを返す（SPA対応）
+app.get('*', (req, res) => {
+  res.sendFile(path.join(__dirname, 'dist', 'index.html'))
+})
+
+
 app.listen(PORT, () => {
   console.log(`APIサーバー起動: http://localhost:${PORT}`)
   console.log('※データは5分間キャッシュされます')
