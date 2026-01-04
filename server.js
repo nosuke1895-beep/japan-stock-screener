@@ -320,12 +320,6 @@ app.get('*', (req, res) => {
 
 const PORT = 3001
 
-// すべてのルートでindex.htmlを返す（SPA対応）
-app.get('*', (req, res) => {
-  res.sendFile(path.join(__dirname, 'dist', 'index.html'))
-})
-
-
 app.listen(PORT, () => {
   console.log(`APIサーバー起動: http://localhost:${PORT}`)
   console.log('※データは5分間キャッシュされます')
