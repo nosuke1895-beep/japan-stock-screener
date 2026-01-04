@@ -2,7 +2,7 @@
  * J-Quants API Client (バックエンドサーバー経由)
  */
 
-const API_BASE_URL = 'http://localhost:3001/api';
+const API_BASE_URL = import.meta.env.PROD ? '/api' : 'http://localhost:3001/api';
 
 class JQuantsAPIClient {
   constructor() {

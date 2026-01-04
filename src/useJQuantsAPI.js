@@ -40,7 +40,8 @@ export function useJQuantsAPI() {
       setStocks(data);
     } catch (err) {
       setError(err.message || 'データの取得に失敗しました');
-      console.error('Fetch error:', err);
+ 
+     console.error('Fetch error:', err);
     } finally {
       setLoading(false);
     }
