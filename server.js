@@ -31,6 +31,10 @@ async function getLatestPrices() {
         params: { date: dateStr }
       })
       const prices = res.data.data || []
+　　　console.log(`株価データ取得: ${prices.length}件 (日付: ${dateStr})`)
+      if (prices.length > 0) {
+        console.log('サンプル:', prices[0])
+      }
       if (prices.length > 0) {
         console.log(`株価: ${prices.length}件取得 (${dateStr})`)
         return prices
