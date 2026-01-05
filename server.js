@@ -37,6 +37,7 @@ async function getLatestPrices() {
       }
     } catch (e) {
       // skip
+     console.error('株価取得エラー:', e.message)
     }
   }
   return []
